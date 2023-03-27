@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>Долги | Капиталка</title>{% endblock title %}
+{% block content %}
+    <div class="nav-bar">
+        <a href="{% url 'user_wallet' %}" class="nav-link nav-wallet"></a>
+        <a href="{% url 'groups' %}" class="nav-link nav-groups"></a>
+        <a href="{% url 'debts' %}" class="nav-link nav-debts-active"></a>
+        <a href="{% url 'settings' %}" class="nav-link nav-settings"></a>
+        <a href="#" class="nav-link nav-statistics"></a>
+    </div>
+    <div class="content">
+        <div class="logo tablet">
+            <img src={% static 'img/logo80.png' %} alt="Karl Marks">
+            <span class="title">Капиталка</span>
+        </div>
+
+        <div class="modal-dark-bg"></div>
+        <div class="card modal-card">
+            <span class="modal-title">Новый долг</span>
+            <form action="" name="new-debt" class="form modal-form" method='POST'>
+                {% csrf_token %}
+                {{ form.debtor }}
+                <div class="sum-wrapper">
+                    {{ form.value }}
+                    <div class="currency-btn">₽</div>
+                    {{ form.currency }}
+                </div>
+                
+                {{ form.description }}
+                <div class="check-wrapper"><label for="id_is_income">{{ form.is_income.label }}</label>{{ form.is_income }}</div>
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+      
+        <h2 class="section-header">Долги</h2>
+        <div class="table">
+            <div class="card debt-card new-debt-card">
+                <div class="add-image">+</div>
+                <div class="description">
+                    <span class="new debt-title">Добавить долг</span>
+                    <span class="new card-desc">Операции</span>
+                    <span class="new">Сумма</span>
+                </div>
+            </div>
+            {% for debt in debt_list %}
+            <div class="card debt-card">
+                <div class="user-image"></div>
+                <div class="description">
+                    {% if debt.creditor == profile %}
+                        <span class="operation-title"> {{ debt.debtor }} </span>
+                        <span class="card-desc">{{ debt.description }}</span>
+                        <span class="get">+ {{ debt.value }} {{ debt.currency }}</span>
+                    {% else %}
+                        <span class="operation-title"> {{ debt.creditor }} </span>
+                        <span class="card-desc">{{ debt.description }}</span>
+                        <span class="spent">- {{ debt.value }} {{ debt.currency }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src={% static 'js/add-debt.js'%}></script>
+{% endblock content %}

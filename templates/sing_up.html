@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}<title>Регистрация | Капиталка</title>{% endblock title %}
+{% load static %}
+{% block content %}
+    <div class="content">
+        <div class="logo">
+            <img src={% static 'img/logo80.png' %} alt="Karl Marks">
+            <span class="title">Капиталка</span>
+        </div>
+
+        <div class="card qoute">
+            <q>Всякая экономия в конечном счёте сводится к экономии времени.</q>
+            <br>
+            <span class="author">— Карл Маркс.</span>
+        </div>
+
+        <div class="card form-card">
+            <div class="form-wrapper">
+                <h2>Регистрация</h2>
+                <form class="sing-up-form" name="sing-up" action="" method="post">
+                    {% csrf_token %}
+                    {{ form.email }}
+                    {{ form.login }}
+                    {{ form.password }}
+                    {{ form.repeat }}
+                    
+                    <div class="rules-wrapper">
+                        {{ form.agree }}
+                        <label for="id_agree">
+                            <span>Я принимаю условия</span>
+                            <a href="#">пользовательского соглашения</a>
+                        </label>
+                    </div>
+                    {% comment %} <input type="email" name="email" placeholder="электронная почта">
+                    <input type="text" name="login" placeholder="логин">
+                    <input type="password" name="password" placeholder="пароль">
+                    <input type="password" name="repeat" placeholder="повторите пароль">
+                     {% endcomment %}
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+            <div class="bg-wrapper"></div>
+        </div>
+    </div>
+{% endblock content %}

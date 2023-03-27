@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>Группы | Капиталка</title>{% endblock title %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{% url 'user_wallet' %}" class="nav-link nav-wallet"></a>
+        <a href="{% url 'groups' %}" class="nav-link nav-groups-active"></a>
+        <a href="{% url 'debts' %}" class="nav-link nav-debts"></a>
+        <a href="{% url 'settings' %}" class="nav-link nav-settings"></a>
+        <a href="#" class="nav-link nav-statistics"></a>
+    </div>
+    <div class="content">
+        <div class="logo tablet">
+            <img src={% static 'img/logo80.png' %} alt="Karl Marks">
+            <span class="title">Капиталка</span>
+        </div>
+
+        <div class="modal-dark-bg"></div>
+        <div class="card modal-card">
+            <span class="modal-title">Новая группа</span>
+            <form action="" name="new-group" class="form modal-form" method='post'>
+                {% csrf_token %}
+                {{ form.title }}
+                <div class="member-wrapper">
+                    <input type="text" name="member" class='member-input' placeholder="Пользователь">
+                    <div class="add-btn add-member">+</div>
+                </div>
+                {{ form.members }}
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+        
+        <h2 class="section-header">Группы</h2>
+        <div class="table">
+            <div class="card group-card new-group-card">
+                <div class="add-image">+</div>
+                <div class="description">
+                    <span class="group-title new">Новая группа</span>
+                    <span class="new card-desc">Участники</span>
+                    <span class="new">Сумма</span>
+                </div>
+                <span class="users-count">
+                    <img src={% static 'icon/blue-user.png' %} alt="">
+                </span>
+            </div>
+            {% for group, members in group_list %}
+            <a href="{% url 'group_wallet' group.slug %}" class="card group-card">
+                <div class="group-image"></div>
+                <div class="description">
+                    <span class="group-title">{{group.title}}</span>
+                    <span class="card-desc">
+                        {% for member in members %}
+                            {% if forloop.last %}
+                                {{member}}
+                            {% else %}
+                                {{member}},
+                            {% endif %}
+                        {% endfor %}
+                    </span>
+                    <span class="spent">{{group.balance}} {{group.currency}}</span>
+                </div>
+                <span class="users-count">{{ members|length }}
+                    <img src={% static 'icon/light-user.png' %} alt="">
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src={% static 'js/add-group.js' %}></script>
+    <script src={% static 'js/add-member.js' %}></script>
+{% endblock %}

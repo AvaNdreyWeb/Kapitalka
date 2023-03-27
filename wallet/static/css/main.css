@@ -1,0 +1,478 @@
+@import "forms.css";
+@import "modal.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #2A2A2A;
+    background-color: #EDEDED;
+    font-weight: 400;
+    width: 100%;
+    font-size: 14px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    color: #2A2A2A;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 684px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* SING-IN/UP */
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.logo img, .title{
+    display: block;
+}
+
+.qoute, .sing-in, .form-card {
+    width: 500px;
+    text-align: center;
+}
+
+.qoute {font-style: italic;}
+q {font-weight: 300;}
+.author {font-weight: 500;}
+
+.form-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 280px;
+    padding: 20px 50px;
+}
+
+.form-wrapper h2{
+    margin-bottom: 10px;
+}
+
+.bg-wrapper {
+    background-image: url("../img/plug-mountains.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 219px;
+}
+
+.google-btn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 180px;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #808080;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.google-btn img {
+    width: 20px;
+}
+
+.separator {
+    width: 100%;
+    position: relative;
+    margin: 10px 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #2D5FDF;
+}
+
+.or {
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    position: absolute;
+    color: #2D5FDF;
+    font-size: 12px;
+    padding: 0 9px;
+    background-color: #FFFFFF;
+    font-weight: 500;
+}
+
+.temp-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+/* HOME */
+
+.section-header {
+    align-self: baseline;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info-cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-card, .wallet-card {
+    display: flex;
+    align-items: center;
+    width: 230px;
+    height: 120px;
+}
+
+.functions-card {
+    display: flex;
+    width: 120px;
+    height: 120px;
+}
+
+.operation-card, .group-card, .debt-card {
+    position: relative;
+    display: flex;
+    width: 500px;
+    height: 107px;
+}
+
+.user-image, .profile-image, .operation-image, .group-image, .add-image {
+    display: block;
+    border-radius: 50px;
+    background-color: #2A2A2A;
+    width: 48px;
+    height: 48px;
+    margin-right: 15px;
+}
+
+.user-image, .operation-image, .group-image, .add-image {
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.wallet-image {
+    width: 48px;
+    height: 48px;
+    margin-right: 15px;
+    background-image: url("../icon/money.png");
+}
+
+.profile-info, .wallet-info, .description {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.username, .balance {
+    font-weight: 600;
+    font-size: 20px;
+    color: #2A2A2A;
+}
+
+.date, .users-count {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 12px;
+    color: #808080;
+}
+
+.functions-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+
+.btns-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.interval-btn {
+    cursor: pointer;
+    color: #808080;
+    text-decoration: underline;
+}
+
+.currency-btn, .add-btn {
+    padding: 2px 7px;
+    width: 23px;
+    height: 23px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: #2D5FDF;
+    color: #FFFFFF;
+}
+
+.login {
+    cursor: pointer;
+    color: #808080;
+}
+
+.exchange-title, .operation-title, .group-title, .debt-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.spent {
+    color: #E21A1A;
+}
+
+.get {
+    color: #1DB947;
+}
+
+/* NAVIGATION */
+
+.nav-bar {
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    width: 44px;
+    height: 100%;
+    padding: 12px;
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-link {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.nav-wallet-active {
+    background-image: url('../icon/dark-wallet.png');
+}
+.nav-groups-active {
+    background-image: url('../icon/dark-groups.png');
+}
+.nav-debts-active {
+    background-image: url('../icon/dark-debts.png');
+}
+.nav-settings-active {
+    background-image: url('../icon/dark-settings.png');
+}
+.nav-wallet {
+    background-image: url('../icon/light-wallet.png');
+}
+.nav-groups {
+    background-image: url('../icon/light-groups.png');
+}
+.nav-debts {
+    background-image: url('../icon/light-debts.png');
+}
+.nav-settings {
+    background-image: url('../icon/light-settings.png');
+}
+.nav-statistics {
+    background-image: url('../icon/light-stat.png');
+}
+
+/* GROUPS/DEBTS */
+
+.group-card, .debt-card {
+    width: 330px;
+}
+
+.add-image {
+    background-color: #2D5FDF;
+    color: #FFFFFF;
+    font-size: 32px;
+    padding: 5px 15px;
+}
+
+.new {color: #2D5FDF;}
+
+.gray {color: #808080;}
+
+/* SETTINGS */
+
+.exchange-card {
+    width: 160px;
+    height: 120px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.settings-card {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+}
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 20px;
+    width: 280px;
+    padding: 20px 50px;
+}
+
+.bg-settings-wrapper {
+    background-image: url("../img/settings-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 219px;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.table {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.description {
+    width: 100%;
+    overflow: hidden;
+}
+.card-desc {
+    white-space: nowrap;
+    position: relative;
+}
+
+.card-desc::after {
+    content: '';
+    width: 30px;
+    height: 17px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: linear-gradient(to right, transparent, white);
+}
+
+@media (max-width: 767px) { 
+    .nav-bar {
+        bottom: 0;
+        width: 100%;
+        height: 44px;
+        flex-direction: row;
+    }
+
+    .mobile-info-card {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 230px;
+    }
+
+    .wallet-card {
+        align-self: center;
+        height: auto;
+        width: auto;
+    }
+
+    .content {width: 72%; min-width: 230px; max-width: 500px; padding-bottom: 80px;}
+    .card {width: 100%;}
+    .bg-settings-wrapper, .info-cards,
+    .bg-wrapper, .qoute, .tablet {display: none;} 
+    .form-wrapper, .settings-list {
+        padding: 20px;
+    }
+
+    .form-card {
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-bar {
+        bottom: 0;
+        width: 100%;
+        height: 44px;
+        flex-direction: row;
+    }
+    .content {padding-bottom: 80px;}
+    .mobile-info-card {
+        display: none;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1199px) {
+    .mobile-info-card {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .mobile-info-card {
+        display: none;
+    }
+}

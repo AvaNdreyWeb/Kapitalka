@@ -1,0 +1,129 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+input,
+textarea,
+select,
+.select-mult,
+button {
+    display: block;
+    width: 100%;
+    padding: 7px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+input, select {
+    border-bottom: 1px solid #808080;
+    border-radius: 0;
+}
+
+textarea, .select-mult {
+    resize: none;
+    border: 1px solid #808080;
+    height: 100px;
+}
+
+select {
+    height: 35px;
+}
+
+/* хром, сафари */
+.select-mult::-webkit-scrollbar { width: 0; }
+
+input::placeholder,
+textarea::placeholder {
+    transition: 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-bottom: #2A2A2A 2px solid;
+}
+
+textarea:focus,
+.select-mult:focus {
+    border: 2px solid #2a2a2a;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+button {
+    background-color: #2D5FDF;
+    line-height: 125%;
+    font-weight: 500;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Checkbox settings */
+
+.rules-wrapper {
+    display: flex;
+    gap: 9px;
+    text-align: left;
+    font-size: 10px;
+    color: #808080;
+}
+
+.rules-wrapper label {
+    display: block;
+}
+
+.rules-wrapper label a{
+    text-decoration: underline;
+    color: #808080;
+}
+
+.rules {
+    width: 15px;
+}
+
+.check-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+}
+
+/* Modal alignment */
+
+.modal-form {  
+    padding-top: 20px;
+    align-items: baseline;
+}
+
+.modal-card input,
+.modal-card textarea {
+    text-align: left;
+}
+
+.modal-card input::placeholder,
+.modal-card textarea::placeholder {
+    text-align: left;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.sum::-webkit-outer-spin-button,
+.sum::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>Настройки | Капиталка</title>{% endblock title %}
+{% block content %}
+    <div class="nav-bar">
+        <a href="{% url 'user_wallet' %}" class="nav-link nav-wallet"></a>
+        <a href="{% url 'groups' %}" class="nav-link nav-groups"></a>
+        <a href="{% url 'debts' %}" class="nav-link nav-debts"></a>
+        <a href="{% url 'settings' %}" class="nav-link nav-settings-active"></a>
+        <a href="#" class="nav-link nav-statistics"></a>
+    </div>
+    <div class="content">
+        <div class="logo tablet">
+            <img src={% static 'img/logo80.png' %} alt="Karl Marks">
+            <span class="title">Капиталка</span>
+        </div>
+
+        <div class="info-cards">
+            <div class="card profile-card">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                    <span class="username">PublicName</span>
+                    <span class="login">@UserLogin</span>
+                </div>
+            </div>
+            <div class="card exchange-card">
+                <span class="exchange-title">Курсы валют:</span>
+                <div class="rates">
+                    <span>1 $ — 392,35 ֏</span>
+                    <br>
+                    <span>1 ₽ — 5,26 ֏</span>
+                </div>
+            </div>
+        </div>
+        
+
+        <h2 class="section-header">Настройки</h2>
+        
+        <div class="card settings-card">
+            <div class="settings-list">
+                <div class="settings-item">
+                    <img src={% static 'icon/light-pass.png' %} alt="">
+                    <span>Поменять пароль</span>
+                </div>
+                <div class="settings-item">
+                    <img src={% static 'icon/light-lang.png' %} alt="">
+                    <span>Язык интерфейса</span>
+                </div>
+                <a href="{% url 'logout' %}?next={% url 'login' %}">
+                    <div class="settings-item">
+                        <img src={% static 'icon/light-out.png' %} alt="">
+                        <span>Выйти из аккаунта</span>
+                    </div>
+                </a>
+            </div>
+            <div class="bg-settings-wrapper"></div>
+        </div>
+            
+    </div>
+{% endblock content %}

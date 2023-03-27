@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>Кошелёк | Капиталка</title>{% endblock title %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{% url 'user_wallet' %}" class="nav-link nav-wallet-active"></a>
+        <a href="{% url 'groups' %}" class="nav-link nav-groups"></a>
+        <a href="{% url 'debts' %}" class="nav-link nav-debts"></a>
+        <a href="{% url 'settings' %}" class="nav-link nav-settings"></a>
+        <a href="#" class="nav-link nav-statistics"></a>
+    </div>
+    <div class="content">
+        <div class="logo tablet">
+            <img src={% static 'img/logo80.png' %} alt="Karl Marks">
+            <span class="title">Капиталка</span>
+        </div>
+
+        <div class="card mobile-info-card">
+            <div class="wallet-card">
+                <div class="wallet-image"></div>
+                <div class="wallet-info">
+                    <span class="balance">{{wallet.balance}} {{wallet.currency}}</span>
+                    <span class="spent">- 12 000,07 ₽</span>
+                </div>
+            </div>
+
+            <div class="mobile-funcs">
+                <div class="btns-wrapper">
+                    <div class="currency-btn currency-btn-mobile" data-index="0">₽</div>
+                    <span class="interval-btn" data-index="0">всё время</span>
+                    <div class="add-btn">+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <div class="card profile-card">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                    <span class="username">{{ profile.name }}</span>
+                    <span class="login">@{{ profile.slug }}</span>
+                </div>
+            </div>
+            <div class="card wallet-card">
+                <div class="wallet-image"></div>
+                <div class="wallet-info">
+                    <span class="balance">{{wallet.balance}} {{wallet.currency}}</span>
+                    {% if credit_sum != 0 %}
+                    <span class="get">+ {{ credit_sum }} ₽</span>
+                    {% else %}
+                    <span class="get">нет должников</span>
+                    {% endif %}
+                    {% if debt_sum != 0 %}
+                    <span class="spent">- {{ debt_sum }} ₽</span>
+                    {% else %}
+                    <span class="spent">нет займов</span>
+                    {% endif %}
+                    
+                </div>
+            </div>
+            <div class="card functions-card">
+                <div class="btns-wrapper">
+                    <div class="currency-btn currency-btn-main" data-index="0">₽</div>
+                    <div class="add-btn">+</div>
+                </div>
+                <p>Операции: <span class="interval-btn" data-index="0">всё время</span></p>
+            </div>
+        </div>
+
+        <div class="modal-dark-bg" id="modal-bg"></div>
+        <div class="card modal-card" id="modal">
+            <span class="operation-title">Новая операция</span>
+            <form action="#" name="new-operation" class="modal-form" method='post'>
+                {% csrf_token %}
+                <div class="check-wrapper"><label for="id_is_income">{{ form.is_income.label }}</label>{{ form.is_income }}</div>
+                
+                {{ form.name }}
+                <div class="sum-wrapper">
+                    {{ form.value }}
+                    <div class="currency-btn currency-btn-modal" data-index="0">₽</div>
+                    {{ form.currency }}
+                </div>
+                {{ form.date }}
+                {{ form.description }}
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+
+        <h2 class="section-header">Операции</h2>
+
+        {% for operation in operations %}
+        <div class="card operation-card">
+            <div class="operation-image"></div>
+            <div class="description">
+                <span class="operation-title">{{operation.name}}</span>
+                <span class="card-desc">{{operation.description}}</span>
+                {% if operation.is_income %}
+                    <span class="get">+ {{operation.value}} {{operation.currency}}</span>
+                {% else %}
+                    <span class="spent">- {{operation.value}} {{operation.currency}}</span>
+                {% endif %}
+                
+            </div>
+            <span class="date">{{operation.date}}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src={% static 'js/add-operation.js' %}></script>
+    <script src={% static 'js/change-currency.js' %}></script>
+    <script src={% static 'js/change-interval.js' %}></script>
+{% endblock %}

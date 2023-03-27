@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}<title>Вход | Капиталка</title>{% endblock title %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="logo">
+        <img src={% static 'img/logo80.png' %} alt="Karl Marks">
+        <span class="title">Капиталка</span>
+    </div>
+
+    <div class="card qoute">
+        <q>Всякая экономия в конечном счёте сводится к экономии времени.</q>
+        <br>
+        <span class="author">— Карл Маркс.</span>
+    </div>
+
+    <div class="card form-card">
+        <div class="form-wrapper">
+            <h2>Вход</h2>
+            <a class='google-btn' href="#">
+                <img src={% static 'icon/google.svg' %} alt="">
+                <span>Войти через Google</span>
+            </a>
+
+            <div class="separator">
+                <hr>
+                <span class="or">или</span>
+            </div>
+
+            <form method="post" class="sing-in-form" name="sing-in" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.password }}
+                <button type="submit" value="login">Войти</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+            <div class="temp-links">
+                <a href="{% url 'sing_up' %}">Зарегестрироваться</a>
+                <a href="{% url 'password_reset' %}">Восстановить пароль</a>
+            </div>
+        </div>
+        <div class="bg-wrapper"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+.modal-card {
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    position: fixed;
+    z-index: 300;
+    min-width: 230px;
+    width: 40%;
+    max-width: 500px;
+}
+
+.modal-dark-bg {
+    display: none;
+    top: 0;
+    z-index: 200;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.2;
+}
+
+.sum-wrapper, .member-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.new-group-card, .new-debt-card {
+    cursor: pointer;
+}
+
+.block {
+    display: block;
+}
+
+.none {
+    display: none;
+}
+
+.modal-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.checkbox-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.checkbox-wrapper label{
+    display: block;
+}
+
+.checkbox-wrapper input{
+    width: 15px;
+    height: 15px;
+}
+
