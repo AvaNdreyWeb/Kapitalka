@@ -326,6 +326,7 @@ def group_wallet(request, slug):
                     debtor=benefitor,
                     value=equal_sum,
                     is_income=False,
+                    currency=currency,
                     description=f'{group.title}: {name}'
                 )
 
@@ -360,7 +361,6 @@ def group_wallet(request, slug):
                 else:
                     new_debt.delete()
 
-            
             return HttpResponseRedirect(reverse('group_wallet', kwargs={'slug': slug}))
     else:
         form = CreateGroupWalletOperationForm()
@@ -375,7 +375,7 @@ def group_wallet(request, slug):
         credit_list = Debt.objects.filter(creditor=profile, debtor=member)
         for credit in credit_list:
             credit_sum += credit.value
-
+    
     context_data = {
         'operations': operations,
         'wallet': group,
