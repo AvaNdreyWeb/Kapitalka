@@ -114,6 +114,7 @@ class CreateUserWalletOperationForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={"placeholder": "Название"}))
     value = forms.FloatField(widget=forms.NumberInput(attrs={"class": "sum", "placeholder": "Сумма"}))
     currency = forms.CharField(max_length=10, widget=forms.TextInput(attrs={"type": "hidden", "value": "RUB"}))
+    #currency = forms.CharField(max_length=10, widget=forms.TextInput(attrs={"type": "hidden", "value": "RUB", "class": "hidden-cur-code"}))
     date = forms.DateTimeField(widget=forms.DateInput(attrs={'type': 'date', 'class': 'operation-date'}))
     description = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Описание"}), required=False)
 
@@ -122,7 +123,7 @@ class CreateGroupWalletOperationForm(forms.Form):
     is_income = forms.BooleanField(required=False, label='Пополнение', widget=forms.CheckboxInput(attrs={'class': 'rules'}))
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={"placeholder": "Название"}))
     value = forms.FloatField(widget=forms.NumberInput(attrs={"class": "sum", "placeholder": "Сумма"}))
-    currency = forms.CharField(max_length=10, widget=forms.TextInput(attrs={"type": "hidden", "value": "RUB"}))
+    currency = forms.CharField(max_length=10, widget=forms.TextInput(attrs={"type": "hidden", "value": "RUB", "class": "hidden-cur-code"}))
     date = forms.DateTimeField(widget=forms.DateInput(attrs={'type': 'date', 'class': 'operation-date'}))
     description = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Описание"}), required=False)
     depositor = forms.ModelChoiceField(label='Заплатил:', queryset=Profile.objects.all())
