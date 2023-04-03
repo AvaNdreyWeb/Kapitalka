@@ -86,7 +86,7 @@ class CreateGroupForm(forms.Form):
     members = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                'disabled': True,
+                #'disabled': True,
                 'class': 'member-list',
                 'placeholder': '@UserName1\n@UserName2\n...'
             }
@@ -95,7 +95,7 @@ class CreateGroupForm(forms.Form):
 
     def clean_members(self):
         data = self.cleaned_data["members"].split()
-        # data = list(set(data))
+        data = list(set(data))
         all_slugs = [profile.slug for profile in Profile.objects.all()]
         i = 0
         while i < len(data):
